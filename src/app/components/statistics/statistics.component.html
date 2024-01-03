@@ -1,0 +1,18 @@
+<ul class="insights">
+  <li>
+    <i class="bx bxs-folder"></i>
+    <span class="info">
+      <!-- qty of projects -->
+      <h3>{{ projectsCountQTY }}</h3>
+      <p>ALL Projects</p>
+    </span>
+  </li>
+  <li *ngFor="let category of ['Angular', 'React & Next JS', 'HTML, CSS & JS']">
+    <!-- Use appropriate category names based on your project data -->
+    <i [ngClass]="getCategoryIconClass(category)"></i>
+    <span class="info">
+      <h3>{{ projectsCountByCategoryQTY[category] || 0 }}</h3>
+      <p>{{ category }} Projects</p>
+    </span>
+  </li>
+</ul>

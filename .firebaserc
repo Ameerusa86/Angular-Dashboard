@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "projects-blog-feb45": {
+      "hosting": {
+        "projects-admin": [
+          "projects-blog-feb45"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "projects-blog-feb45"
+  }
+}

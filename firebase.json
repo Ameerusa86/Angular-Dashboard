@@ -1,0 +1,11 @@
+{
+  "hosting": [
+    {
+      "target": "projects-admin",
+      "source": ".",
+      "frameworksBackend": {
+        "region": "us-east1"
+      }
+    }
+  ]
+}

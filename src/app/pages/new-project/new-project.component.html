@@ -1,0 +1,113 @@
+@if (postForm) {
+<form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  <div class="container p-4">
+    <div
+      class="flex justify-center items-center flex-col gap-4 mb-7 p-4 rounded-lg bg-lightBg text-darkText dark:bg-darkBg dark:text-lightText"
+    >
+      <h1 class="text-5xl font-bold">{{ formStaus }} project</h1>
+      <p class="dark:text-[--dark]">Add and Manage your project here</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div
+        class="p-4 w-full h-full rounded-lg shadow-md bg-lightBg text-darkText dark:bg-darkBg dark:text-lightText"
+      >
+        <div class="mb-5">
+          <div class="wave-group">
+            <label class="">Title</label>
+            <input
+              type="text"
+              class="input"
+              (keyup)="onTitleChanged($event)"
+              formControlName="title"
+            />
+            <div>
+              <div
+                *ngIf="fc['title'].touched && fc['title'].invalid"
+                class="text-red-600"
+              >
+                Title is required
+              </div>
+            </div>
+            <span class="bar"></span>
+          </div>
+        </div>
+        <div class="mb-5">
+          <div class="wave-group">
+            <label for="">Link</label>
+            <input
+              type="text"
+              class="input"
+              [(ngModel)]="link"
+              formControlName="link"
+            />
+            <span class="bar"></span>
+          </div>
+        </div>
+        <!-- Textarea for project Details -->
+        <div class="w-full">
+          <label for="message" class="label">Technologies Used</label>
+          <textarea
+            id="message"
+            rows="4"
+            class="mt-5 block p-2.5 w-full text-lg"
+            placeholder="Write your thoughts here..."
+          ></textarea>
+        </div>
+      </div>
+      <div>
+        <div
+          class="p-4 w-full h-full rounded-lg shadow-md bg-lightBg text-darkText dark:bg-darkBg dark:text-lightText"
+        >
+          <div class="flex flex-col">
+            <label for="message" class="label">Project Category</label>
+            <select
+              name=""
+              id=""
+              class="bg-transparent"
+              formControlName="category"
+            >
+              <option value="">--Select Category--</option>
+              @for(category of categories; track categories){
+              <option
+                class="bg-lightBg text-darkText dark:bg-darkBg dark:text-lightText p-4"
+                value="{{ category.id }}-{{ category.category }}"
+              >
+                {{ category.category }}
+              </option>
+              }
+            </select>
+          </div>
+          <div class="flex flex-col gap-2">
+            <label for="message" class="label">Project Image</label>
+            <img [src]="imgSrc" alt="" class="w-full h-full rounded-xl" />
+            <input
+              type="file"
+              accept="image/*"
+              (change)="projectImage($event)"
+              formControlName="projectImage"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="w-full p-4 rounded-lg bg-lightBg text-darkText dark:bg-darkBg dark:text-lightText"
+  >
+    <label for="message" class="label">Project Content</label>
+    <!-- <textarea
+      formControlName="content"
+      class="mt-5 block p-2.5 w-full text-lg"
+      placeholder="Write your thoughts here..."
+    ></textarea> -->
+    <quill-editor
+      formControlName="content"
+      [styles]="{ height: '300px' }"
+    ></quill-editor>
+  </div>
+  <div class="mt-5 flex justify-center items-center gap-3">
+    <button>{{ formStaus }} Project</button>
+    <button routerLink="/projects">Back to Projects</button>
+  </div>
+</form>
+}

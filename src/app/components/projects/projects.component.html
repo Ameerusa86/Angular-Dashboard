@@ -1,0 +1,68 @@
+<div class="bottom-data">
+  <div class="orders">
+    <div class="header">
+      <i class="bx bx-receipt"></i>
+      <h3>Recent Projects</h3>
+      <i class="bx bx-filter"></i>
+      <i class="bx bx-search"></i>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Project Name</th>
+          <th>Category</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over the projects array and display project details -->
+        @for (project of recentProjects; track $index) {
+        <tr>
+          <td>
+            <p>{{ project.title }}</p>
+          </td>
+          <td>{{ project.category.category }}</td>
+          <td>
+            <span class="status completed">{{ project.status }}</span>
+          </td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Reminders -->
+<!-- <div class="reminders">
+    <div class="header">
+      <i class="bx bx-note"></i>
+      <h3>Remiders</h3>
+      <i class="bx bx-filter"></i>
+      <i class="bx bx-plus"></i>
+    </div>
+    <ul class="task-list">
+      <li class="completed">
+        <div class="task-title">
+          <i class="bx bx-check-circle"></i>
+          <p>Start Our Meeting</p>
+        </div>
+        <i class="bx bx-dots-vertical-rounded"></i>
+      </li>
+      <li class="completed">
+        <div class="task-title">
+          <i class="bx bx-check-circle"></i>
+          <p>Analyse Our Site</p>
+        </div>
+        <i class="bx bx-dots-vertical-rounded"></i>
+      </li>
+      <li class="not-completed">
+        <div class="task-title">
+          <i class="bx bx-x-circle"></i>
+          <p>Play Footbal</p>
+        </div>
+        <i class="bx bx-dots-vertical-rounded"></i>
+      </li>
+    </ul>
+  </div> -->
+
+<!-- End of Reminders-->

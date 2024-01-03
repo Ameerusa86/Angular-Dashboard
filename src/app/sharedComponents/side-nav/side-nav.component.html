@@ -1,0 +1,46 @@
+<div class="sidebar">
+  <a href="#" class="logo">
+    <i class="bx bx-code-alt"></i>
+    <div class="logo-name"><span>Ameer</span>Dev</div>
+  </a>
+  <ul class="side-menu">
+    @if (!isAuthenticated) {
+    <li class="active" routerLink="/">
+      <a routerLink="/"><i class="bx bxs-dashboard"></i>Dashboard</a>
+    </li>
+    } @else{
+    <li routerLink="/projects">
+      <a routerLink="/projects"><i class="bx bx-store-alt"></i>Projects</a>
+    </li>
+    <li routerLink="/category">
+      <a routerLink="/category"><i class="bx bx-analyse"></i>Categories</a>
+    </li>
+    <li routerLink="/new-project">
+      <a routerLink="/new-project"
+        ><i class="bx bx-message-square-dots"></i>New Project</a
+      >
+    </li>
+    <li routerLink="/users">
+      <a routerLink="/users"><i class="bx bx-group"></i>Users</a>
+    </li>
+    <li routerLink="/settings">
+      <a routerLink="/settings"><i class="bx bx-cog"></i>Settings</a>
+    </li>
+    }
+  </ul>
+  <ul class="side-menu">
+    <li class="font-bold cursor-pointer" routerLink="/register">
+      <a class="login">
+        <i class="bx bx-log-in-circle"></i>
+        Register
+      </a>
+    </li>
+
+    <li class="font-bold cursor-pointer" (click)="logout($event)">
+      <a class="logout font-bold">
+        <i class="bx bx-log-out-circle"></i>
+        Logout
+      </a>
+    </li>
+  </ul>
+</div>

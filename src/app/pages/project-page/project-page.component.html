@@ -1,0 +1,63 @@
+<div
+  class="w-full mx-auto bg-lightBg text-darkText dark:bg-darkBg dark:text-lightText rounded-lg p-5"
+>
+  <div class="flex flex-col gap-4 items-center mb-16 mt-8">
+    <h1 class="text-5xl font-bold">All Projects</h1>
+    <p class="">Manage your posts</p>
+  </div>
+  <div class="flex justify-center items-center gap-4 mb-8">
+    <button routerLink="/new-project" class="cursor-pointer">
+      Add New Project
+    </button>
+    <button routerLink="/" class="cursor-pointer">Back to Dashboard</button>
+  </div>
+</div>
+
+<!-- Projects Table -->
+<div
+  class="relative overflow-x-auto mt-5 rounded-lg bg-lightBg text-darkText dark:bg-darkBg dark:text-lightText"
+>
+  <table class="w-full text-lg text-left">
+    <thead class="text-lg uppercase">
+      <tr class="bg-lightBg dark:bg-darkBg">
+        <th scope="col" class="px-6 py-3 text-center">#</th>
+        <th scope="col" class="px-6 py-3 text-center">Project Title</th>
+        <th scope="col" class="px-6 py-3 text-center">Category</th>
+        <th scope="col" class="px-6 py-3 text-center">Action</th>
+      </tr>
+    </thead>
+    <tbody class="dark:bg-lightBg bg-darkBg dark:text-darkText text-lightText">
+      @for(project of projects; track projects.length; let i=$index){
+      <tr class="border-b">
+        <th
+          scope="row"
+          class="text-center px-6 py-4 font-medium whitespace-nowrap"
+        >
+          {{ i + 1 }}
+        </th>
+        <td class="px-6 py-4 text-center">{{ project.title }}</td>
+        <td class="px-6 py-4 text-center">{{ project.category.category }}</td>
+        <td
+          class="px-6 py-4 text-center flex items-center justify-center gap-2"
+        >
+          <button
+            class="text-lg btn-edit"
+            routerLink="/new-project"
+            [queryParams]="{
+              id: project.id
+            }"
+          >
+            Edit
+          </button>
+          <button
+            class="text-lg btn-delete"
+            (click)="onDelete(project.id, project.imageUrl)"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>

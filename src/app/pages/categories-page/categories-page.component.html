@@ -1,0 +1,72 @@
+<div
+  class="w-full mx-auto rounded-lg p-5 bg-lightBg text-darkText dark:bg-darkBg dark:text-lightText"
+>
+  <div class="flex flex-col gap-4 items-center mb-16 mt-8">
+    <h1 class="text-5xl font-bold">{{ formTitle }} Categories</h1>
+    <p class="">{{ formTitle }} your categories here</p>
+  </div>
+  <div class="flex justify-center items-center gap-4 mb-8">
+    <form
+      class="form"
+      #categoryForm="ngForm"
+      (ngSubmit)="onSubmit(categoryForm)"
+    >
+      <input
+        class="input"
+        placeholder="Category name"
+        type="text"
+        [(ngModel)]="formCategory"
+        name="category"
+        #newCategory="ngModel"
+      />
+      @if (newCategory.touched && newCategory.invalid){
+      <div class="text-red-400 mt-3">Category field is required!</div>
+      }
+
+      <span class="input-border"></span>
+    </form>
+    <button
+      type="submit"
+      (click)="onSubmit(categoryForm)"
+      [disabled]="categoryForm.invalid || categoryForm.pristine"
+      class="cursor-pointer"
+    >
+      {{ formTitle }} category
+    </button>
+  </div>
+</div>
+
+<div class="relative overflow-x-auto mt-5 rounded-lg">
+  <table class="w-full text-lg text-left">
+    <thead class="text-lg uppercase">
+      <tr
+        class="dark:text-lightBg text-darkBg bg-lightBg dark:bg-darkBg text-center"
+      >
+        <th scope="col" class="px-6 py-3">#</th>
+        <th scope="col" class="px-6 py-3">Category</th>
+        <th scope="col" class="px-6 py-3">Action</th>
+      </tr>
+    </thead>
+    <tbody class="dark:bg-lightBg bg-darkBg dark:text-darkText text-lightText">
+      @for(category of categoryArray; track categoryArray; let i=$index){
+      <tr class="border-b text-center">
+        <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+          {{ i + 1 }}
+        </th>
+        <td class="px-6 py-4">{{ category.category }}</td>
+        <td class="px-6 py-4 flex items-center justify-center gap-2">
+          <button
+            class="text-lg btn-edit"
+            (click)="onEdit(category.category, category.id)"
+          >
+            Edit
+          </button>
+          <button class="text-lg btn-delete" (click)="onDelete(category.id)">
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
