@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../models/users';
 import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { RegisterValidators } from '../validators/register-validators';
 
 @Component({
   selector: 'app-register',
